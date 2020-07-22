@@ -2,6 +2,7 @@ package kuaishou
 
 import (
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
 )
@@ -35,7 +36,7 @@ func GetVideoLink(url string)(string, error)  {
 	response, _ := client.Do(request)
 	defer response.Body.Close()
 
-
+	fmt.Println(lastUrlQuery)
 	return lastUrlQuery, nil
 }
 

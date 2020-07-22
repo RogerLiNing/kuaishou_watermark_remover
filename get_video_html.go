@@ -7,6 +7,7 @@ import (
 )
 
 func GetVideoHtml(url string)(string, error)  {
+
 	client := &http.Client{}
 	request, err := http.NewRequest("GET", url, nil)
 
@@ -14,7 +15,7 @@ func GetVideoHtml(url string)(string, error)  {
 	request.Header.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
 	request.Header.Add("Accept-Language", "zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3")
 	request.Header.Add("Host", "c.kuaishou.com")
-	request.Header.Add("Cookie","did=web_d6c2effa98354bcbaa518816cfdd3d45; didv=1594704296000; clientid=3; client_key=65890b29; Hm_lvt_86a27b7db2c5c0ae37fee4a8a35033ee=1594703274,1594728587; kuaishou.live.bfb1s=477cb0011daca84b3...: 6b3a4676857e5a1")
+	request.Header.Add("Cookie","did=web_d6c2effa98354bcbaa518816cfdd3d45; didv=1594704296000; clientid=3; client_key=65890b29; Hm_lvt_86a27b7db2c5c0ae37fee4a8a35033ee=1594703274,1594728587,1595351859,1595352041")
 
 
 	if err != nil {
