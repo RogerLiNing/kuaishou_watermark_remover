@@ -1,7 +1,6 @@
 package kuaishou
 
 import (
-	"fmt"
 	"strings"
 	"testing"
 )
@@ -12,7 +11,6 @@ func TestAvailableVideo(t *testing.T) {
 	t.Log("测试有效视频短链接：" + url)
 
 	u, err := WatermarkRemover(url)
-	fmt.Println(u)
 	if !strings.Contains(u, ".mp4") {
 		t.Fail()
 	}

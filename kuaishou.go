@@ -2,13 +2,13 @@ package kuaishou
 
 func WatermarkRemover(url string)(string, error)  {
 
-	videoLink, err := GetVideoLink(url)
+	result := GetVideoLink(url)
 
-	if err != nil {
-		return "", err
+	if result.Err != nil {
+		return "", result.Err
 	}
 
-	html, err := GetVideoHtml(videoLink)
+	html, err := GetVideoHtml(result.Link, result.Cookies)
 
 	if err != nil {
 		return "", err
