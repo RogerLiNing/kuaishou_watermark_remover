@@ -27,6 +27,7 @@ func GetVideoHtml(url string, cookieStr string)(string, error)  {
 
 	body, err := ioutil.ReadAll(response.Body)
 
+
 	if err != nil {
 		log.Fatal(err)
 		return "", nil
