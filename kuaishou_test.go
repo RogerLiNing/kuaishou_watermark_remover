@@ -10,7 +10,7 @@ func TestAvailableVideo(t *testing.T) {
 	t.Log("测试有效视频短链接：" + url)
 
 	u, _ := WatermarkRemover(url)
-
+	t.Log(u)
 	if !u.Success {
 		t.Fail()
 	}

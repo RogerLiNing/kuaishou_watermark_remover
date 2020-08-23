@@ -26,17 +26,20 @@ func WatermarkRemover(url string) (Data, error) {
 		return data, err
 	}
 
+	// 0 是视频，1是图集
 	if strings.Contains(html, "图集分享") {
 		imageLinks := ExtractImageLink(html)
 		if len(imageLinks) > 0 {
 			data.ImageLinkList = imageLinks
 			data.Success = true
+			data.Type = 1
 		}
 	} else {
 		videoLink := ExtractVideoLink(html)
 		if len(videoLink) > 0 {
 			data.VideoLink = videoLink
 			data.Success = true
+			data.Type = 0
 		}
 	}
 
