@@ -1,23 +1,18 @@
 package kuaishou
 
 import (
-	"strings"
 	"testing"
 )
 
 func TestAvailableVideo(t *testing.T) {
 
-	url := "https://v.kuaishouapp.com/s/BrAzrciX" // https://v.kuaishou.com/789ppB https://v.kuaishouapp.com/s/4znp78gd
+	url := "https://v.kuaishouapp.com/s/4znp78gd" //  https://v.kuaishouapp.com/s/4znp78gd https://v.kuaishou.com/5u1OpM https://v.kuaishouapp.com/s/o0rrbRHb
 	t.Log("测试有效视频短链接：" + url)
 
-	u, err := WatermarkRemover(url)
-	if !strings.Contains(u, ".mp4") {
-		t.Fail()
-	}
+	u, _ := WatermarkRemover(url)
 
-	if err != nil {
+	if !u.Success {
 		t.Fail()
-		t.Log(err)
 	}
 
 }
@@ -33,7 +28,7 @@ func TestUnAvailableVideo(t *testing.T) {
 		t.Log(err)
 	}
 
-	if len(u) != 0 {
+	if len(u.VideoLink) != 0 {
 
 		t.Fail()
 	}
