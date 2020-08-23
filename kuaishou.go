@@ -1,9 +1,5 @@
 package kuaishou
 
-import (
-	"strings"
-)
-
 type Data struct {
 	Success       bool     `json:"success"`
 	Type          int      `json:"type"`
@@ -21,26 +17,25 @@ func WatermarkRemover(url string) (Data, error) {
 	}
 
 	html, err := GetVideoHtml(result.Link, result.Cookies)
-
 	if err != nil {
 		return data, err
 	}
 
+	// 直接运行判断，非此即彼
+
+	imageLinks := ExtractImageLink(html)
+	videoLink := ExtractVideoLink(html)
+
 	// 0 是视频，1是图集
-	if strings.Contains(html, "图集分享") {
-		imageLinks := ExtractImageLink(html)
-		if len(imageLinks) > 0 {
-			data.ImageLinkList = imageLinks
-			data.Success = true
-			data.Type = 1
-		}
-	} else {
-		videoLink := ExtractVideoLink(html)
-		if len(videoLink) > 0 {
-			data.VideoLink = videoLink
-			data.Success = true
-			data.Type = 0
-		}
+	if len(imageLinks) > 0 {
+		data.ImageLinkList = imageLinks
+		data.Success = true
+		data.Type = 1
+
+	} else if len(videoLink) > 0 {
+		data.VideoLink = videoLink
+		data.Success = true
+		data.Type = 0
 	}
 
 	return data, nil

@@ -6,7 +6,7 @@ import (
 
 func TestAvailableVideo(t *testing.T) {
 
-	url := "https://v.kuaishouapp.com/s/4znp78gd" //  https://v.kuaishouapp.com/s/4znp78gd https://v.kuaishou.com/5u1OpM https://v.kuaishouapp.com/s/o0rrbRHb
+	url := "https://v.kuaishou.com/5u1OpM" //  https://v.kuaishouapp.com/s/4znp78gd https://v.kuaishou.com/5u1OpM https://v.kuaishouapp.com/s/o0rrbRHb  https://v.kuaishou.com/79cv50
 	t.Log("测试有效视频短链接：" + url)
 
 	u, _ := WatermarkRemover(url)

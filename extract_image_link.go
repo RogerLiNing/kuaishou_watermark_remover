@@ -19,5 +19,6 @@ func ExtractImageLink(content string) []string {
 		}
 
 	}
+
 	return imageLinks
 }
